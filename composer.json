@@ -1,0 +1,21 @@
+{
+    "name": "teamincredibles/products",
+    "description": "This is the product modules for CRM project",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Teamincredibles\\Products\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Teamincredibles\\Products\\ProductsServiceProvider"
+            ]
+        }
+    }
+}
+
