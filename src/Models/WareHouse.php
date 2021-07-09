@@ -39,6 +39,7 @@ class WareHouse extends Model
         $warehouse->name = $request->name;
         $warehouse->shop_id = $request->shop_id;
         $warehouse->status = WareHouse::ACTIVE;
+        $warehouse->update();
         return $warehouse;
     }
 

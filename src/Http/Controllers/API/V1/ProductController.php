@@ -16,7 +16,7 @@ class ProductController extends Controller
 
     public function productDelete(Request $request) {
         $this->validate($request,[
-            'id' => 'required|integer',
+            'product_id' => 'required|integer',
         ]);
         $product = Product::getProductInstance($request->id);
         if($product == null) {
