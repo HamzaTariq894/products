@@ -39,7 +39,7 @@ class Measurement_Unit extends Model
     }
 
     public static function getMeasurementUnitInstance($id) {
-        return Measurement_Unit::findOrFail($id);
+        return Measurement_Unit::find($id);
     }
 
     public static function getAllMeasurementUnits($limit = Measurement_Unit::LIMIT) {

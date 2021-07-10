@@ -15,7 +15,7 @@ class Measurement_UnitController extends Controller
         return response([
             'code' => 201,
             'status' => true,
-            'message' =>'Measurement_Unit Created Successfully',
+            'message' =>'Measurementunit Created Successfully',
             'data' => $measurementunit,
         ]);
     }
@@ -26,14 +26,14 @@ class Measurement_UnitController extends Controller
             return response([
                 'code' => 201,
                 'status' => true,
-                'message' =>'Measurement_Unit Updated Successfully',
+                'message' =>'Measurementunit Updated Successfully',
                 'data' => $measurementunit,
             ]);
         } else {
             return response([
                 'code' => 202,
                 'status' => false,
-                'message' => 'Measurement_Unit does\'t exists!',
+                'message' => 'Measurementunit does\'t exists!',
             ]);
         }
     }
@@ -44,21 +44,15 @@ class Measurement_UnitController extends Controller
             return response([
                 'code' => 202,
                 'status' => false,
-                'message' => 'Measurement_Unit does\'t exists!',
+                'message' => 'Measurementunit does\'t exists!',
             ]);
-        } else if($measurementunit != null) {
+        } else {
             $measurementunit->delete();
             return response([
                 'code' => 200,
                 'status' => true,
-                'message' =>'Measurement_Unit Deleted Successfully',
+                'message' =>'Measurementunit Deleted Successfully',
             ]);
-        } else {
-                return response([
-                'code' => 200,
-                'status' => false,
-                'message' =>'Invalid Request',
-                ]);
         }
     }
 
@@ -70,7 +64,7 @@ class Measurement_UnitController extends Controller
         return response([
             'code' => 200,
             'status' => true,
-            'message' =>'Measurement_Unit Restored Successfully',
+            'message' =>'Measurementunit Restored Successfully',
         ]);
     }
 
