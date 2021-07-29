@@ -45,6 +45,8 @@ Route::get('demo', function() {
         Route::get('warehouse/restore',[\Teamincredibles\Products\Http\Controllers\API\V1\WareHouseController::class, 'warehouseRestore'])->name('product.warehouse.restore');
         Route::get('get/all/warehouses',[\Teamincredibles\Products\Http\Controllers\API\V1\WareHouseController::class, 'getAllWareHouses'])->name('product.get.all.warehouses');
         Route::post('add/vendor',[\Teamincredibles\Products\Http\Controllers\API\V1\VendorController::class, 'addVendor'])->name('product.add.vendor');       
+        Route::post('update/vendor',[\Teamincredibles\Products\Http\Controllers\API\V1\VendorController::class, 'updateVendor'])->name('product.update.vendor');       
+        Route::post('vendor/delete',[\Teamincredibles\Products\Http\Controllers\API\V1\VendorController::class, 'deleteVendor'])->name('product.delete.vendor');       
         Route::post('add/category',[\Teamincredibles\Products\Http\Controllers\API\V1\CategoryController::class, 'addCategory'])->name('product.add.category');       
         Route::post('edit/category/details',[\Teamincredibles\Products\Http\Controllers\API\V1\CategoryController::class, 'editCategoryDetails'])->name('product.edit.category.details');       
         Route::post('category/delete',[\Teamincredibles\Products\Http\Controllers\API\V1\CategoryController::class, 'deleteCategory'])->name('product.category.delete');

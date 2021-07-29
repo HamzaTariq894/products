@@ -18,6 +18,7 @@ class CreateVendorsTable extends Migration
             $table->string('name');
             $table->integer('owner_id');
             $table->boolean('status');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

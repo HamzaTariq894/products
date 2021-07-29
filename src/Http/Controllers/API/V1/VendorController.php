@@ -20,8 +20,8 @@ class VendorController extends Controller
         ]);
     }
 
-    public function editVendorDetails(VendorRequest $request) {
-        $vendor = Vendor::editVendorDetails($request);
+    public function updateVendor(VendorRequest $request) {
+        $vendor = Vendor::updateVendor($request);
         return response([
             'code' => 201,
             'status' => true,
@@ -30,39 +30,33 @@ class VendorController extends Controller
         ]);
     }
 
-    // public function deleteVendor(VendorRequest $request) {
-    //     $vendor = Vendor::getVendorInstance($request->vendor_id);
-    //     if($vendor == null) {
-    //         return response([
-    //             'code' => 202,
-    //             'status' => false,
-    //             'message' => 'vendor does\'t exists!',
-    //         ]);
-    //     } else if($vendor != null) {
-    //         $vendor->delete();
-    //         return response([
-    //             'code' => 200,
-    //             'status' => true,
-    //             'message' =>'vendor Deleted Successfully',
-    //         ]);
-    //     } else {
-    //             return response([
-    //             'code' => 200,
-    //             'status' => false,
-    //             'message' =>'Invalid Request',
-    //             ]);
-    //     }
-    // }
+    public function deleteVendor(VendorRequest $request) {
+        $vendor = Vendor::getVendorInstance($request->vendor_id);
+        if($vendor == null) {
+            return response([
+                'code' => 202,
+                'status' => false,
+                'message' => 'vendor does\'t exists!',
+            ]);
+        } else {
+            $vendor->delete();
+            return response([
+                'code' => 200,
+                'status' => true,
+                'message' =>'vendor Deleted Successfully',
+            ]);
+        }
+    }
 
-    // public function vendorRestore(Request $request) {
-    //     $this->validate($request,[
-    //         'vendor_id' => 'required|integer',
-    //     ]);
-    //     Vendor::vendorRestore($request->vendor_id); 
-    //     return response([
-    //         'code' => 200,
-    //         'status' => true,
-    //         'message' =>'vendor Restored Successfully',
-    //     ]);
-    // }
+    public function vendorRestore(Request $request) {
+        $this->validate($request,[
+            'vendor_id' => 'required|integer',
+        ]);
+        Vendor::vendorRestore($request->vendor_id); 
+        return response([
+            'code' => 200,
+            'status' => true,
+            'message' =>'vendor Restored Successfully',
+        ]);
+    }
 }

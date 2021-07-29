@@ -34,12 +34,15 @@ class Vendor extends Model
         $this->save();
     }
 
-    public static function editVendorDetails($request) {
+    public static function updateVendor($request) {
         $vendor = Vendor::getVendorInstance($request->vendor_id);
         $vendor->name = $request->vendor_name;
         $vendor->status = Vendor::ACTIVE;
-        $vendor->update();
-        return $vendor;
+        if($vendor->update()) {
+            return $vendor;
+        } else {
+            return [];
+        }
     }
 
     public static function vendorRestore($id) {
@@ -47,6 +50,6 @@ class Vendor extends Model
     }
 
     public static function getVendorInstance($id) {
-        return Vendor::findOrFail($id);
+        return Vendor::find($id);
     }
 }
