@@ -28,6 +28,7 @@ class VendorRequest extends FormRequest
             'owner_id' => 'required|integer'
             ];
         if(strpos($this->path(),'update/vendor') !== false) {
+            unset($rules['owner_id']);
             $rules += ['vendor_id' => 'required|integer'];
         } else if(strpos($this->path(),'vendor/delete') !== false) {
             unset($rules['vendor_name']);
