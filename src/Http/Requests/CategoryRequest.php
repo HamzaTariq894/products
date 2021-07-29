@@ -25,14 +25,14 @@ class CategoryRequest extends FormRequest
     {
         $rules = [
             'name' => 'required|string',
-            'owner_id' => 'required|integer'
+            'shop_id' => 'required|integer'
             ];
         if(strpos($this->path(),'edit/category/details') !== false) {
             $rules += ['category_id' => 'required|integer'];
-            unset($rules['owner_id']);
+            unset($rules['shop_id']);
         } else if(strpos($this->path(),'category/delete') !== false) {
             unset($rules['name']);
-            unset($rules['owner_id']);
+            unset($rules['shop_id']);
             $rules += ['category_id' => 'required|integer'];
         }
         return $rules;

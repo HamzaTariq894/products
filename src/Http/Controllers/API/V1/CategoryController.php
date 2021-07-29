@@ -46,19 +46,13 @@ class CategoryController extends Controller
                 'status' => false,
                 'message' => 'Category does\'t exists!',
             ]);
-        } else if($category != null) {
+        } else {
             $category->delete();
             return response([
                 'code' => 200,
                 'status' => true,
                 'message' =>'Category Deleted Successfully',
             ]);
-        } else {
-                return response([
-                'code' => 200,
-                'status' => false,
-                'message' =>'Invalid Request',
-                ]);
         }
     }
 

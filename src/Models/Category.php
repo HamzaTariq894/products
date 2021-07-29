@@ -21,7 +21,7 @@ class Category extends Model
     protected $fillable = [
         'name', 
         'status',
-        'owner_id',
+        'shop_id',
     ];
 
     public function products() {
@@ -29,12 +29,12 @@ class Category extends Model
     }
 
     public static function getCategoryInstance($id) {
-        return Category::findOrFail($id);
+        return Category::find($id);
     }
 
     public function addCategory($request) {
         $this->name = $request->name;
-        $this->owner_id = $request->owner_id;
+        $this->shop_id = $request->shop_id;
         $this->status = Category::ACTIVE;
         $this->save();
     }
