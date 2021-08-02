@@ -25,7 +25,7 @@ class ProductController extends Controller
                 'status' => false,
                 'message' => 'Product does\'t exists!',
             ]);
-        } else if($product != null) {
+        } else {
             $product->delete();
             $product->categories()->detach();
             return response([
@@ -33,12 +33,6 @@ class ProductController extends Controller
                 'status' => true,
                 'message' =>'Product Deleted Successfully',
             ]);
-        } else {
-                return response([
-                'code' => 200,
-                'status' => false,
-                'message' =>'Invalid Request',
-                ]);
         }
     }
 
