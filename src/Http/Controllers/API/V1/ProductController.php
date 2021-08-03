@@ -18,7 +18,7 @@ class ProductController extends Controller
         $this->validate($request,[
             'product_id' => 'required|integer',
         ]);
-        $product = Product::getProductInstance($request->id);
+        $product = Product::getProductInstance($request->product_id);
         if($product == null) {
             return response([
                 'code' => 202,

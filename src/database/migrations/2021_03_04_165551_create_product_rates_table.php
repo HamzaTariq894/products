@@ -21,7 +21,7 @@ class CreateProductRatesTable extends Migration
             $table->float('dealer_sale_price');
             $table->float('wholesale_sale_price');
             $table->float('retailer_sale_price');
-            $table->integer('shop_id');
+            $table->integer('branch_id');
             $table->foreign('product_id')->references('id')->on('products');
             $table->boolean('status');
             $table->softDeletes();

@@ -67,19 +67,13 @@ class RateController extends Controller
                 'status' => false,
                 'message' => 'Rate does\'t exists!',
             ]);
-        } else if($rate != null) {
+        } else {
             $rate->delete();
             return response([
                 'code' => 200,
                 'status' => true,
                 'message' =>'Rate Deleted Successfully',
             ]);
-        } else {
-                return response([
-                'code' => 200,
-                'status' => false,
-                'message' =>'Invalid Request',
-                ]);
         }
     }
 }

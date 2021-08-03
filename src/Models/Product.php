@@ -86,16 +86,19 @@ class Product extends Model
         $product->description = $request->description;
         $product->measurement_unit_id = $request->measurement_unit_id;
         $product->status = Product::ACTIVE;
-        $product->update(); 
-        if ($product->categories->pluck('id')->toArray() != $request->category_ids) {
-            $product->categories()->detach();
-            $product->categories()->attach($request->category_ids, ['status' => Product::ACTIVE]);
+        if($product->update()) {
+            if ($product->categories->pluck('id')->toArray() != $request->category_ids) {
+                $product->categories()->detach();
+                $product->categories()->attach($request->category_ids, ['status' => Product::ACTIVE]);
+            }
+            return $product;
+        } else {
+            return [];
         }
-        return $product;
     }
 
     public static function getProductInstance($id) {
-        return Product::findOrFail($id);
+        return Product::find($id);
     }
 
     public static function productRestore($id) {

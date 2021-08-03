@@ -39,6 +39,7 @@ class ProductRequest extends FormRequest
             'vendor_name' => 'required|string',
             ];
         if(strpos($this->path(),'add/product') !== false){
+            $rules += ['branch_id' => 'required|integer'];
             if($this->request->get('vendor_id')) {
                 unset($rules['vendor_name']);
             } else if($this->request->get('vendor_name')) {
@@ -57,7 +58,7 @@ class ProductRequest extends FormRequest
             unset($rules['measurement_unit_id']);
             unset($rules['warehouse_id']);
             $rules += ['product_id' => 'required|integer'];
-            $rules += ['shop_id' => 'required|integer'];
+            $rules += ['branch_id' => 'required|integer'];
         } else if(strpos($this->path(),'edit/product/details') !== false) {
             unset($rules['purchase_rate']);
             unset($rules['vendor_name']);
