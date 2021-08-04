@@ -59,6 +59,12 @@ class ProductRequest extends FormRequest
             unset($rules['warehouse_id']);
             $rules += ['product_id' => 'required|integer'];
             $rules += ['branch_id' => 'required|integer'];
+            $rules += ['rate_id' => 'required|integer'];
+            $rules += ['purchase_rate' => 'required|numeric'];
+            $rules += ['sale_rate' => 'required|numeric'];
+            $rules += ['dealer_sale_price' => 'required|numeric'];
+            $rules += ['wholesale_sale_price' => 'required|numeric'];
+            $rules += ['retailer_sale_price' => 'required|numeric'];
         } else if(strpos($this->path(),'edit/product/details') !== false) {
             unset($rules['purchase_rate']);
             unset($rules['vendor_name']);
@@ -78,6 +84,12 @@ class ProductRequest extends FormRequest
             unset($rules['warehouse_id']);
             $rules += ['product_id' => 'required|integer'];
             $rules += ['rate_id' => 'required|integer'];
+            $rules += ['purchase_rate' => 'required|numeric'];
+            $rules += ['sale_rate' => 'required|numeric'];
+            $rules += ['dealer_sale_price' => 'required|numeric'];
+            $rules += ['wholesale_sale_price' => 'required|numeric'];
+            $rules += ['retailer_sale_price' => 'required|numeric'];
+            $rules += ['branch_id' => 'required|integer'];
         }
         return $rules;
     }
