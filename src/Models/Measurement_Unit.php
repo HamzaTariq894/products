@@ -26,7 +26,7 @@ class Measurement_Unit extends Model
     }
 
     public function product() {
-        return $this->belongsTo(Product::class, 'measurement_unit_id');
+        return $this->belongsTo(Product::class, 'id');
     }
 
     public static function editMeasurementUnitDetails($request) {

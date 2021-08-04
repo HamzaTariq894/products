@@ -47,7 +47,7 @@ class Product extends Model
     }
 
     public function measurement_units() {
-        return $this->hasMany(Measurement_Unit::class, 'measurement_unit_id');
+        return $this->hasMany(Measurement_Unit::class, 'id');
     }
 
     public function addProduct($request) {
