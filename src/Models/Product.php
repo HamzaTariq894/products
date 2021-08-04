@@ -46,6 +46,10 @@ class Product extends Model
         return $this->hasMany(Rate::class);
     }
 
+    public function measurement_units() {
+        return $this->hasMany(Measurement_Unit::class, 'measurement_unit_id');
+    }
+
     public function addProduct($request) {
         $this->code = $request->code;
         $this->owner_id = $request->owner_id;
