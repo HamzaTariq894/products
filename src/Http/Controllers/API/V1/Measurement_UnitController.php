@@ -77,5 +77,15 @@ class Measurement_UnitController extends Controller
             'data' => $measurementunit,
         ]);
     }
+
+    public function measurementUnitsDropdownList() {
+        $measurementunits = Measurement_Unit::getmeasurementUnitsDropdownList();
+        return response([
+            'code' => 201,
+            'status' => true,
+            'message' => 'Success',
+            'data' => $measurementunits,
+        ]);
+    }
 }
 

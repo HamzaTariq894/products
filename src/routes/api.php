@@ -57,6 +57,8 @@ Route::get('demo', function() {
         Route::post('delete/measurementunit',[\Teamincredibles\Products\Http\Controllers\API\V1\Measurement_UnitController::class, 'deleteMeasurementUnit'])->name('product.measurementunit.delete');
         Route::get('restore/measurementunit',[\Teamincredibles\Products\Http\Controllers\API\V1\Measurement_UnitController::class, 'measurementUnitRestore'])->name('product.measurementunit.restore');
         Route::get('get/all/measurementunits',[\Teamincredibles\Products\Http\Controllers\API\V1\Measurement_UnitController::class, 'getAllMeasurementUnits'])->name('product.get.all.measurementunits');
+        Route::get('/measurementunits/dropdown/list',[\Teamincredibles\Products\Http\Controllers\API\V1\Measurement_UnitController::class, 'measurementUnitsDropdownList'])->name('product.get.all.measurementunits');
+        
         Route::get('compare/two/products', [\Teamincredibles\Products\Http\Controllers\API\V1\ProductController::class, 'compareTwoProducts'])->name('product.compare.two.products');        
         Route::get('search/products',[\Teamincredibles\Products\Http\Controllers\API\V1\ProductController::class, 'searchProducts'])->name('product.search.products');
         

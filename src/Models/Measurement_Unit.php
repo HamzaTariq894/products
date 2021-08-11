@@ -49,4 +49,16 @@ class Measurement_Unit extends Model
     public static function getAllMeasurementUnits($limit = Measurement_Unit::LIMIT) {
         return Measurement_Unit::paginate($limit);
     }
+
+    public static function getmeasurementUnitsDropdownList() {
+        $measurementunits = Measurement_Unit::all();
+        return collect($measurementunits)->map(function($collection, $key) {
+            $collect = (object)$collection;
+            return [
+                'value' => $collect->id,
+                'label' => $collect->name,
+            ];
+        });
+
+    }
 }
