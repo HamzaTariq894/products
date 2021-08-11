@@ -84,7 +84,7 @@ class Measurement_UnitController extends Controller
             'code' => 201,
             'status' => true,
             'message' => 'Success',
-            'data' => ['measurementunits' => $measurementunits],
+            'data' => ['units' => $measurementunits],
         ]);
     }
 }
