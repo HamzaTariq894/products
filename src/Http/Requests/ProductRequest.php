@@ -37,6 +37,7 @@ class ProductRequest extends FormRequest
             'wholesale_sale_price' => 'required|numeric',
             'retailer_sale_price' => 'required|numeric',
             'vendor_name' => 'required|string',
+            'description' => 'required|string'
             ];
         if(strpos($this->path(),'add/product') !== false){
             $rules += ['branch_id' => 'required|integer'];
@@ -87,6 +88,7 @@ class ProductRequest extends FormRequest
             unset($rules['description']);
             unset($rules['measurement_unit_id']);
             unset($rules['warehouse_id']);
+            unset($rules['description']);
             $rules += ['product_id' => 'required|integer'];
             $rules += ['rate_id' => 'required|integer'];
             $rules += ['purchase_rate' => 'required|numeric'];
