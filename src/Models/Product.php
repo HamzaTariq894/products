@@ -84,17 +84,17 @@ class Product extends Model
 
     public static function updateProductDetails($request) {
         $product = Product::getProductInstance($request->product_id);
-        $product->code = $request->code;
-        $product->owner_id = $request->owner_id;
-        $product->vendor_id = $request->vendor_id;
+        // $product->code = $request->code;
+        // $product->owner_id = $request->owner_id;
+        // $product->vendor_id = $request->vendor_id;
         $product->description = $request->description;
         $product->measurement_unit_id = $request->measurement_unit_id;
         $product->status = Product::ACTIVE;
         if($product->update()) {
-            if ($product->categories->pluck('id')->toArray() != $request->category_ids) {
-                $product->categories()->detach();
-                $product->categories()->attach($request->category_ids, ['status' => Product::ACTIVE]);
-            }
+            // if ($product->categories->pluck('id')->toArray() != $request->category_ids) {
+            //     $product->categories()->detach();
+            //     $product->categories()->attach($request->category_ids, ['status' => Product::ACTIVE]);
+            // }
             return $product;
         } else {
             return [];
