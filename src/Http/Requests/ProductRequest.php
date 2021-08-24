@@ -53,6 +53,7 @@ class ProductRequest extends FormRequest
             unset($rules['code']);
             unset($rules['owner_id']);
             unset($rules['vendor_id']);
+            unset($rules['vendor_name']);
             unset($rules["category_ids"]);
             unset($rules["category_ids.*"]);
             unset($rules['description']);
@@ -60,7 +61,6 @@ class ProductRequest extends FormRequest
             unset($rules['warehouse_id']);
             $rules += ['product_id' => 'required|integer'];
             $rules += ['branch_id' => 'required|integer'];
-            $rules += ['rate_id' => 'required|integer'];
             $rules += ['purchase_rate' => 'required|numeric'];
             $rules += ['sale_rate' => 'required|numeric'];
             $rules += ['dealer_sale_price' => 'required|numeric'];
@@ -83,6 +83,7 @@ class ProductRequest extends FormRequest
             unset($rules['code']);
             unset($rules['owner_id']);
             unset($rules['vendor_id']);
+            unset($rules['vendor_name']);
             unset($rules["category_ids"]);
             unset($rules["category_ids.*"]);
             unset($rules['description']);
