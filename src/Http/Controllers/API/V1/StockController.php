@@ -36,7 +36,7 @@ class StockController extends Controller
         $this->validate($request,[
             'stock_id' => 'required|integer',
         ]);
-        $stock = Stock::getStockInstance($request->stock_id);
+        $stock = Stock::getStockDetails($request->stock_id);
         if($stock == null) {
             return response([
                 'code' => 202,
