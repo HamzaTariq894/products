@@ -21,7 +21,7 @@ class StockController extends Controller
                 'code' => 201,
                 'status' => true,
                 'message' =>'Stocks Updated Successfully',
-                'data' => $stock,
+                'data' => ['stock' => $stock],
             ]);
         } else {
             return response([
@@ -43,19 +43,13 @@ class StockController extends Controller
                 'status' => false,
                 'message' => 'Stock does\'t exists!',
             ]);
-        } else if($stock != null) {
+        } else {
             $stock->delete();
             return response([
                 'code' => 200,
                 'status' => true,
                 'message' =>'Stock Deleted Successfully',
             ]);
-        } else {
-                return response([
-                'code' => 200,
-                'status' => false,
-                'message' =>'Invalid Request',
-                ]);
         }
     }
 }

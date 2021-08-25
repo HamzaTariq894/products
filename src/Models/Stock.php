@@ -47,11 +47,12 @@ class Stock extends Model
         $this->opening_stock = $request->opening_stock ?? 0;
         $this->status = Stock::ACTIVE;
         if($this->save()) {
+            $this->warehouse;
             return response([
                 'code' => 201,
                 'status' => true,
                 'message' => 'Stock Save Successfully',
-                'data' =>  $this,
+                'data' =>  ['stock' => $this],
             ]);
         } else {
             return response([
@@ -75,11 +76,15 @@ class Stock extends Model
         $stock->rack_no = $request->rack_no;
         $stock->opening_stock = $request->opening_stock ?? 0;
         $stock->status = Stock::ACTIVE;
-        $stock->update();
-        return $stock;
+        if($stock->update()) {
+            $stock->warehouse;
+            return $stock;
+        } else {
+            return [];
+        }
     }
 
     public static function getStockDetails($id) {
-        return Stock::findOrFail($id);
+        return Stock::find($id);
     }
 }
