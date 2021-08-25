@@ -37,19 +37,13 @@ class WareHouseController extends Controller
                 'status' => false,
                 'message' => 'Warehouse does\'t exists!',
             ]);
-        } else if($warehouse != null) {
+        } else {
             $warehouse->delete();
             return response([
                 'code' => 200,
                 'status' => true,
                 'message' =>'Warehouse Deleted Successfully',
             ]);
-        } else {
-                return response([
-                'code' => 200,
-                'status' => false,
-                'message' =>'Invalid Request',
-                ]);
         }
     }
 

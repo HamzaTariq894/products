@@ -29,18 +29,23 @@ class WareHouse extends Model
         $warehouse = new WareHouse;
         $warehouse->name = $request->name;
         $warehouse->shop_id = $request->shop_id;
+        $warehouse->branch_id = $request->branch_id;
         $warehouse->status = WareHouse::ACTIVE;
-        $warehouse->save();
-        return $warehouse;
+        if($warehouse->save()) {
+            return $warehouse;
+        } else {
+            return [];
+        }
     }
 
     public static function editWareHouseDetails($request) {
         $warehouse = WareHouse::getWareHouseInstance($request->warehouse_id);
         $warehouse->name = $request->name;
-        $warehouse->shop_id = $request->shop_id;
-        $warehouse->status = WareHouse::ACTIVE;
-        $warehouse->update();
-        return $warehouse;
+        if($warehouse->update()) {
+            return $warehouse;
+        } else {
+            return [];
+        }
     }
 
     public static function warehouseRestore($id) {

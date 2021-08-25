@@ -25,13 +25,15 @@ class WareHouseRequest extends FormRequest
     {
         $rules = [
             'name' => 'required|string',
-            'shop_id' => 'required|integer'
+            'shop_id' => 'integer',
+            'branch_id' => 'integer'
             ];
         if(strpos($this->path(),'edit/warehouse/details') !== false) {
             $rules += ['warehouse_id' => 'required|integer'];
         } else if(strpos($this->path(),'warehouse/delete') !== false) {
             unset($rules['name']);
             unset($rules['shop_id']);
+            unset($rules['branch_id']);
             $rules += ['warehouse_id' => 'required|integer'];
         }
         return $rules;
