@@ -17,15 +17,16 @@ class CreateProductsTable extends Migration
             $table->Increments('id');
             $table->integer('code');
             $table->unsignedInteger('owner_id');
-            $table->unsignedInteger('vendor_id')->default(0);
+            $table->unsignedInteger('vendor_id');
+            $table->unsignedInteger('rate_id');
             $table->text('description');
-            $table->unsignedInteger('measurement_unit_id')->default(0);
+            $table->unsignedInteger('measurement_unit_id');
             $table->boolean('status');
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('vendor_id')->references('id')->on('vendors');
             $table->foreign('measurement_unit_id')->references('id')->on('measurement_units');
-            $table->foreign('owner_id')->references('id')->on('users');
+            $table->foreign('rate_id')->references('id')->on('product_rates');
         });
     }
 

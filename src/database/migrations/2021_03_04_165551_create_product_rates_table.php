@@ -14,15 +14,12 @@ class CreateProductRatesTable extends Migration
     public function up()
     {
         Schema::create('product_rates', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('product_id')->default(0);
-            $table->float('purchase_rate');
-            $table->float('sale_rate');
-            $table->float('dealer_sale_price');
-            $table->float('wholesale_sale_price');
-            $table->float('retailer_sale_price');
-            $table->integer('branch_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->Increments('id');
+            $table->decimal('purchase_rate');
+            $table->decimal('sale_rate');
+            $table->decimal('dealer_sale_price');
+            $table->decimal('wholesale_sale_price');
+            $table->decimal('retailer_sale_price');
             $table->boolean('status');
             $table->softDeletes();
             $table->timestamps();

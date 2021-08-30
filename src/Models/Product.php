@@ -42,8 +42,8 @@ class Product extends Model
         return $this->hasMany(Stock::class);
     }
 
-    public function rates() {
-        return $this->hasMany(Rate::class);
+    public function rate() {
+        return $this->belongsTo(Rate::class);
     }
 
     public function measurement_unit() {
