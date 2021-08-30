@@ -23,6 +23,7 @@ class Product extends Model
         'code',
         'owner_id',
         'vendor_id',
+        'rate_id',
         'category_id',
         'description',
         'measurement_unit_id',

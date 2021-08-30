@@ -15,13 +15,11 @@ class Rate extends Model
     protected $table = "product_rates";
 
     protected $fillable = [
-        'product_id',
         'purchase_rate',
         'sale_rate',
         'dealer_sale_price',
         'wholesale_sale_price' ,
         'retailer_sale_price',
-        'branch_id',
         'status'
     ];
 
