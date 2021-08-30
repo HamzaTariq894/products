@@ -40,7 +40,6 @@ class ProductRequest extends FormRequest
             'description' => 'required|string'
             ];
         if(strpos($this->path(),'add/product') !== false){
-            $rules += ['branch_id' => 'required|integer'];
             if($this->request->get('vendor_id')) {
                 unset($rules['vendor_name']);
             } else if($this->request->get('vendor_name')) {
@@ -59,8 +58,6 @@ class ProductRequest extends FormRequest
             unset($rules['description']);
             unset($rules['measurement_unit_id']);
             unset($rules['warehouse_id']);
-            $rules += ['product_id' => 'required|integer'];
-            $rules += ['branch_id' => 'required|integer'];
             $rules += ['purchase_rate' => 'required|numeric'];
             $rules += ['sale_rate' => 'required|numeric'];
             $rules += ['dealer_sale_price' => 'required|numeric'];
@@ -90,14 +87,12 @@ class ProductRequest extends FormRequest
             unset($rules['measurement_unit_id']);
             unset($rules['warehouse_id']);
             unset($rules['description']);
-            $rules += ['product_id' => 'required|integer'];
             $rules += ['rate_id' => 'required|integer'];
             $rules += ['purchase_rate' => 'required|numeric'];
             $rules += ['sale_rate' => 'required|numeric'];
             $rules += ['dealer_sale_price' => 'required|numeric'];
             $rules += ['wholesale_sale_price' => 'required|numeric'];
             $rules += ['retailer_sale_price' => 'required|numeric'];
-            $rules += ['branch_id' => 'required|integer'];
         }
         return $rules;
     }

@@ -28,7 +28,7 @@ class Rate extends Model
     }
 
     public static function updateProductRates($request) {
-        $product_rates = Rate::getRateInstance($request->rate_id);
+        $product_rates = Rate::find($request->rate_id);
         $product_rates->purchase_rate = $request->purchase_rate;
         $product_rates->sale_rate = $request->sale_rate;
         $product_rates->dealer_sale_price = $request->dealer_sale_price;
@@ -44,8 +44,8 @@ class Rate extends Model
 
     public function associateProductRates($request, $id) {
         $product = Product::getProductInstance($id);
-        $product_rates = new Rate(['purchase_rate' => $request->purchase_rate, 'sale_rate' => $request->sale_rate, 'dealer_sale_price' => $request->dealer_sale_price, 'wholesale_sale_price' => $request->wholesale_sale_price, 'retailer_sale_price' => $request->retailer_sale_price, 'branch_id' => $request->branch_id, 'status' => Rate::ACTIVE]);
-        if($product->rates()->save($product_rates)) {
+        $product_rates = new Rate(['purchase_rate' => $request->purchase_rate, 'sale_rate' => $request->sale_rate, 'dealer_sale_price' => $request->dealer_sale_price, 'wholesale_sale_price' => $request->wholesale_sale_price, 'retailer_sale_price' => $request->retailer_sale_price, 'status' => Rate::ACTIVE]);
+        if($product->rate()->save($product_rates)) {
             return  $product_rates;
         } else {
             return [];

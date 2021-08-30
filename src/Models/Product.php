@@ -67,12 +67,15 @@ class Product extends Model
         if($this->save()) {
             $id = $this->id;
             $this->categories()->attach($request->category_ids, ['status' => Product::ACTIVE]);
-            $product_rates = new Rate;
+            $rate = new Rate;
+            $product_rate = $rate->associateProductRates($request, $id);
+            $this->rate_id = $product_rate->id;
+            $this->save();
             return response([
                 'code' => 201,
                 'status' => true,
                 'message' => 'Product Created Successfully',
-                'data' => ['product' => $this, 'product_rates' => $product_rates->associateProductRates($request, $id)],
+                'data' => ['product' => $this, 'product_rates' => $product_rate],
             ]);
         } else {
             return response([
