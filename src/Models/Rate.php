@@ -27,14 +27,13 @@ class Rate extends Model
         return $this->hasOne(Product::class);
     }
 
-    public static function updateProductRates($request) {
+    public static function updateProductRate($request) {
         $product_rates = Rate::find($request->rate_id);
         $product_rates->purchase_rate = $request->purchase_rate;
         $product_rates->sale_rate = $request->sale_rate;
         $product_rates->dealer_sale_price = $request->dealer_sale_price;
         $product_rates->wholesale_sale_price = $request->wholesale_sale_price;
         $product_rates->retailer_sale_price = $request->retailer_sale_price;
-        $product_rates->status = Rate::ACTIVE;
         if($product_rates->update()) {
             return $product_rates;
         } else {

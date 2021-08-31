@@ -76,7 +76,7 @@ class ProductRequest extends FormRequest
             unset($rules["category_ids"]);
             unset($rules["category_ids.*"]);
             $rules += ['product_id' => 'required|integer'];
-        } else if(strpos($this->path(),'edit/product/rates') !== false) {
+        } else if(strpos($this->path(),'edit/product/rate') !== false) {
             unset($rules['code']);
             unset($rules['owner_id']);
             unset($rules['vendor_id']);

@@ -30,7 +30,7 @@ Route::get('demo', function() {
         //Route::post('add/product/rate', [\Teamincredibles\Products\Http\Controllers\API\V1\RateController::class, 'addProductRates'])->name('product.add.product.rates');
         Route::post('product/delete',[\Teamincredibles\Products\Http\Controllers\API\V1\ProductController::class, 'productDelete'])->name('product.product.delete');
         Route::post('edit/product/details',[\Teamincredibles\Products\Http\Controllers\API\V1\ProductController::class, 'editProductDetails'])->name('product.edit.product.details');
-        Route::post('edit/product/rate',[\Teamincredibles\Products\Http\Controllers\API\V1\RateController::class, 'editProductRates'])->name('product.edit.product.rates');
+        Route::post('edit/product/rate',[\Teamincredibles\Products\Http\Controllers\API\V1\RateController::class, 'editProductRate'])->name('product.edit.product.rates');
         Route::post('add/product/stock',[\Teamincredibles\Products\Http\Controllers\API\V1\StockController::class, 'addProductStock'])->name('product.add.product.stock');
         Route::post('edit/product/stock',[\Teamincredibles\Products\Http\Controllers\API\V1\StockController::class, 'editProductStocks'])->name('product.edit.product.stocks');
         Route::post('stock/delete',[\Teamincredibles\Products\Http\Controllers\API\V1\StockController::class, 'stockDelete'])->name('product.stock.delete');

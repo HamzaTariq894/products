@@ -38,8 +38,8 @@ class RateController extends Controller
         }
     }
 
-    public function editProductRates(ProductRequest $request) {
-        $product_rates = Rate::updateProductRates($request);
+    public function editProductRate(ProductRequest $request) {
+        $product_rates = Rate::updateProductRate($request);
         if($product_rates != null) {
             return response([
                 'code' => 201,
