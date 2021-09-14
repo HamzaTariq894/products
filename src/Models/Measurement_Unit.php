@@ -59,6 +59,17 @@ class Measurement_Unit extends Model
                 'label' => $collect->name,
             ];
         });
+    }
 
+    public static function measurementunitsDetails($measurementunit_id) {
+        $counter = count($measurementunit_id);
+        $array = [];
+        for($i = 0; $i < $counter; $i++) {
+            $measurementunit = self::find($measurementunit_id[$i]);
+            $array[$i] = $measurementunit;
+        }
+        $c = array_values($array);
+        $collect = collect($c);
+        return $collect;
     }
 }
