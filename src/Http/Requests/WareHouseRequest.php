@@ -25,8 +25,8 @@ class WareHouseRequest extends FormRequest
     {
         $rules = [
             'name' => 'required|string',
-            'shop_id' => 'integer',
-            'branch_id' => 'integer'
+            'shop_id' => 'required|integer',
+            'branch_id' => 'nullable|integer'
             ];
         if(strpos($this->path(),'edit/warehouse/details') !== false) {
             $rules += ['warehouse_id' => 'required|integer'];
