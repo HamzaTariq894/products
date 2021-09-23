@@ -35,7 +35,7 @@ class StockRequest extends FormRequest
             'rack_no' => 'nullable|integer',
             'opening_stock' => 'nullable|integer',
         ];
-        if(strpos($this->path(),'edit/product/stocks') !== false) {
+        if(strpos($this->path(),'edit/product/stock') !== false) {
             unset($rules['product_id']);
             unset($rules['warehouse_id']);
             $rules += ['stock_id' => 'required|integer'];
