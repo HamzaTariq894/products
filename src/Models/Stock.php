@@ -65,8 +65,6 @@ class Stock extends Model
 
     public static function updateProductStocks($request) {
         $stock = Stock::getStockDetails($request->stock_id);
-        $stock->product_id = $request->product_id;
-        $stock->warehouse_id = $request->warehouse_id;
         $stock->name = $request->name;
         $stock->quantity = $request->quantity;
         $stock->preferred_vendor = $request->preferred_vendor ?? 0;
@@ -75,7 +73,6 @@ class Stock extends Model
         $stock->reorder_quantity = $request->reorder_quantity ?? 0;
         $stock->rack_no = $request->rack_no;
         $stock->opening_stock = $request->opening_stock ?? 0;
-        $stock->status = Stock::ACTIVE;
         if($stock->update()) {
             $stock->warehouse;
             return $stock;

@@ -19,6 +19,7 @@ class WareHouse extends Model
         'name',
         'status',
         'shop_id',
+        'branch_id',
     ];
 
     public function stocks() {

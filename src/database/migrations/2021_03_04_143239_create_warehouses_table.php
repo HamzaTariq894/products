@@ -17,6 +17,7 @@ class CreateWarehousesTable extends Migration
             $table->Increments('id');
             $table->string('name');
             $table->integer('shop_id');
+            $table->integer('branch_id')->nullable(true);
             $table->boolean('status');
             $table->softDeletes();
             $table->timestamps();

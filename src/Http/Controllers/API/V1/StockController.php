@@ -21,7 +21,7 @@ class StockController extends Controller
                 'code' => 201,
                 'status' => true,
                 'message' =>'Stocks Updated Successfully',
-                'data' => ['stock' => $stock],
+                'data' => $stock,
             ]);
         } else {
             return response([
