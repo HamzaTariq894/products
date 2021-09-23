@@ -30,12 +30,14 @@ class StockRequest extends FormRequest
             'quantity' => 'required|integer',
             'preferred_vendor' => 'sometimes|integer',
             'min_stock_level' => 'nullable|integer',
-            'max_stock_level' => 'nullable|string',
+            'max_stock_level' => 'nullable|integer',
             'reorder_quantity' =>'nullable|integer',
             'rack_no' => 'nullable|integer',
             'opening_stock' => 'nullable|integer',
         ];
         if(strpos($this->path(),'edit/product/stocks') !== false) {
+            unset($rules['product_id']);
+            unset($rules['warehouse_id']);
             $rules += ['stock_id' => 'required|integer'];
         }
         return $rules;
