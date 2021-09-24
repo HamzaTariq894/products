@@ -35,31 +35,40 @@ class Stock extends Model
     }
 
     public function addStock($request) {
-        $this->product_id = $request->product_id;
-        $this->warehouse_id = $request->warehouse_id;
-        $this->name = $request->name;
-        $this->quantity = $request->quantity;
-        $this->preferred_vendor = $request->preferred_vendor ?? 0;
-        $this->min_stock_level = $request->min_stock_level ?? 0;
-        $this->max_stock_level = $request->max_stock_level ?? 0;
-        $this->reorder_quantity = $request->reorder_quantity ?? 0;
-        $this->rack_no = $request->rack_no;
-        $this->opening_stock = $request->opening_stock ?? 0;
-        $this->status = Stock::ACTIVE;
-        if($this->save()) {
-            $this->warehouse;
+        $warehouse = WareHouse::where('branch_id', $request->branch_id)->first();
+        if($warehouse == null) {
             return response([
-                'code' => 201,
-                'status' => true,
-                'message' => 'Stock Save Successfully',
-                'data' =>  ['stock' => $this],
+                'code' => 202,
+                'status' => false,
+                'message' => 'Branch Store does\'t exists!',
             ]);
         } else {
-            return response([
-                'code' => 200,
-                'status' => false,
-                'message' => 'Stock Not Save Successfully',
-            ]);
+            $this->product_id = $request->product_id;
+            $this->warehouse_id = $warehouse->id;
+            $this->name = $request->name;
+            $this->quantity = $request->quantity;
+            $this->preferred_vendor = $request->preferred_vendor ?? 0;
+            $this->min_stock_level = $request->min_stock_level ?? 0;
+            $this->max_stock_level = $request->max_stock_level ?? 0;
+            $this->reorder_quantity = $request->reorder_quantity ?? 0;
+            $this->rack_no = $request->rack_no;
+            $this->opening_stock = $request->opening_stock ?? 0;
+            $this->status = Stock::ACTIVE;
+            if($this->save()) {
+                $this->warehouse;
+                return response([
+                    'code' => 201,
+                    'status' => true,
+                    'message' => 'Stock Save Successfully',
+                    'data' =>  ['stock' => $this],
+                ]);
+            } else {
+                return response([
+                    'code' => 200,
+                    'status' => false,
+                    'message' => 'Stock Not Save Successfully',
+                ]);
+            }
         }
     }
 
