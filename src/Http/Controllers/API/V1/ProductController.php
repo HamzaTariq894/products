@@ -123,6 +123,7 @@ class ProductController extends Controller
         ]);
         $product = Product::getProductInstance($request->product_id);
         $stocks = $product->stocks;
+        $stocks->load('warehouse');
         return response([
             'code' => 201,
             'status' => true,
