@@ -116,4 +116,18 @@ class ProductController extends Controller
             'data' => $products,
         ]);
     }
+
+    public function getProductStocks(Request $request) {
+        $this->validate($request,[
+            'product_id' => 'required|integer'
+        ]);
+        $product = Product::getProductInstance($request->product_id);
+        $stocks = $product->stocks;
+        return response([
+            'code' => 201,
+            'status' => true,
+            'message' => 'Success',
+            'data' => $stocks,
+        ]);
+    }
 }
