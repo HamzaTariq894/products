@@ -25,7 +25,7 @@ class StockRequest extends FormRequest
     {
         $rules = [
             'product_id' => 'required|integer',
-            'warehouse_id' => 'required|integer',
+            'branch_id' => 'required|integer',
             'name' => 'nullable|string',
             'quantity' => 'required|integer',
             'preferred_vendor' => 'sometimes|integer',
@@ -37,7 +37,7 @@ class StockRequest extends FormRequest
         ];
         if(strpos($this->path(),'edit/product/stock') !== false) {
             unset($rules['product_id']);
-            unset($rules['warehouse_id']);
+            unset($rules['branch_id']);
             $rules += ['stock_id' => 'required|integer'];
         }
         return $rules;
