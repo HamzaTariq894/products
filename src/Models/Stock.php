@@ -60,7 +60,7 @@ class Stock extends Model
                     'code' => 201,
                     'status' => true,
                     'message' => 'Stock Save Successfully',
-                    'data' =>  ['stock' => $this],
+                    'data' => $this,
                 ]);
             } else {
                 return response([
