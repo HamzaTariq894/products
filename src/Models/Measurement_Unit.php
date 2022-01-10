@@ -16,11 +16,12 @@ class Measurement_Unit extends Model
     protected $table = "measurement_units";
 
     protected $fillable = [
-        'name', 'status',
+        'name', 'shop_id', 'status',
     ];
 
     public function addMeasurementUnit($request) {
         $this->name = $request->name;
+        $this->shop_id = $request->shop_id;
         $this->status = Measurement_Unit::ACTIVE;
         $this->save();
     }
